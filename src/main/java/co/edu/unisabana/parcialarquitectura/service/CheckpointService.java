@@ -9,9 +9,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @AllArgsConstructor
-public class CheckpointService {
-
-  private CheckpointPort checkpointPort;
+public class CheckpointService implements ICheckpointService{
 
   public void checkin(CheckpointDTO checkpoint) {
     if (checkpoint.dayOfMonth > 30 || checkpoint.dayOfMonth < 1) {
