@@ -1,0 +1,24 @@
+name: CI
+on:
+  pull_request:
+    branches: ["main"]
+permissions:
+  contents: read
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Compilando
+        uses: actions/checkout@v4
+      - name: Instalación de Don Java
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+      - name: Run chmod to make gradlew executable
+        run: chmod +x ./gradlew
+      - name: Complicacion :D (compilacion)
+        uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
+        with:
+          arguments: build
